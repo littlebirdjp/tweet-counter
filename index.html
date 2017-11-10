@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Tweet Counter</title>
+</head>
+<body>
+
+<h1>Tweet Counter</h1>
+
+<hr>
+
+<textarea cols="30" rows="10" id="textarea"></textarea>
+
+<div id="result">
+140
+</div>
+
+<hr>
+
+<p>Developed on <a href="https://github.com/littlebirdjp/tweet-counter">GitHub</a>.</p>
+
+<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+<script>
+$("#textarea").on("input", function () {
+  var results = [],
+    max_count = 140;
+    half = ($("#textarea").val()).match(/[a-zA-Z0-9]/g) !== null ? ($("#textarea").val()).match(/[a-zA-Z0-9]/g) : "",
+    full = ($("#textarea").val()).match(/[^a-zA-Z0-9]/g) !== null ? ($("#textarea").val()).match(/[^a-zA-Z0-9]/g) : "",
+    word_count = (half.length / 2) + full.length,
+    rest_count = max_count - word_count;
+
+  $("#result").text(rest_count);
+
+});
+</script>
+</body>
+</html>
