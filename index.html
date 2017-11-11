@@ -16,11 +16,15 @@
 
 <hr>
 
+<p>
+  残り文字数：<span id="result">140</span>
+</p>
+
 <textarea cols="30" rows="10" id="textarea"></textarea>
 
-<div id="result">
-140
-</div>
+<p>
+  <span id="tweet"><a href="https://twitter.com/intent/tweet?text=" target="_blank">Tweet</a></span>
+</p>
 
 <hr>
 
@@ -28,17 +32,21 @@
 
 <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 <script>
-$("#textarea").on("input", function () {
+$('#textarea').on('input', function () {
   var results = [],
     max_count = 140;
-    half = ($("#textarea").val()).match(/[a-zA-Z0-9]/g) !== null ? ($("#textarea").val()).match(/[a-zA-Z0-9]/g) : "",
-    full = ($("#textarea").val()).match(/[^a-zA-Z0-9]/g) !== null ? ($("#textarea").val()).match(/[^a-zA-Z0-9]/g) : "",
+    half = ($('#textarea').val()).match(/[a-zA-Z0-9]/g) !== null ? ($('#textarea').val()).match(/[a-zA-Z0-9]/g) : '',
+    full = ($('#textarea').val()).match(/[^a-zA-Z0-9]/g) !== null ? ($('#textarea').val()).match(/[^a-zA-Z0-9]/g) : '',
     word_count = (half.length / 2) + full.length,
-    rest_count = max_count - word_count;
+    rest_count = max_count - word_count,
+    text = $('#textarea').val(),
+    tweet= '<a href="https://twitter.com/intent/tweet?text=' + text + '" target="_blank">Tweet</a>';
 
   $("#result").text(rest_count);
+  $("#tweet").html(tweet);
 
 });
+
 </script>
 </body>
 </html>
