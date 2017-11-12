@@ -24,6 +24,7 @@
 
 <p>
   <span id="tweet"><a href="https://twitter.com/intent/tweet?text=" target="_blank">Tweet</a></span>
+  <button id="copy">Copy</button>
   <button id="clear">Clear</button>
 </p>
 
@@ -45,6 +46,11 @@ $('#textarea').on('input', function () {
   $("#result").text(rest_count);
   $("#tweet").html(tweet);
 
+});
+$('#copy').on('click', function () {
+  $('#textarea').select();
+  var copy_text = document.execCommand('copy');
+  return copy_text;
 });
 $('#clear').on('click', function () {
   var rest_count = 140,
