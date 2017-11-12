@@ -49,8 +49,8 @@ $('#textarea').on('input', function () {
 });
 $('#copy').on('click', function () {
   $('#textarea').select();
-  var copy_text = document.execCommand('copy');
-  return copy_text;
+  $('#textarea').get(0).setSelectionRange(0,9999);
+  document.execCommand('copy');
 });
 $('#clear').on('click', function () {
   var rest_count = 140,
